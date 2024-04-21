@@ -164,25 +164,25 @@
 # Ejercicio 7:
 # Escribir un programa que ingrese un número telefónico como un string y convierta los
 # caracteres a el dígito correspondiente, ejemplo:
-#                       1-800-FLOWERS  ---> 1-800-3569377
-def convertir_a_numero_telefonico(telefono):
-    letras_telefono = ['ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQRS', 'TUV', 'WXYZ']
-    numero_telefonico = ''
+# #                       1-800-FLOWERS  ---> 1-800-3569377
+# def convertir_a_numero_telefonico(telefono):
+#     letras_telefono = ['ABC', 'DEF', 'GHI', 'JKL', 'MNO', 'PQRS', 'TUV', 'WXYZ']
+#     numero_telefonico = ''
     
-    for caracter in telefono:
-        for conjunto_letras, numero in zip(letras_telefono, range(2, 10)):
-            if caracter.upper() in conjunto_letras:
-                numero_telefonico += str(numero)
-                break
-        else:
-            numero_telefonico += caracter
+#     for caracter in telefono:
+#         for conjunto_letras, numero in zip(letras_telefono, range(2, 10)):
+#             if caracter.upper() in conjunto_letras:
+#                 numero_telefonico += str(numero)
+#                 break
+#         else:
+#             numero_telefonico += caracter
     
-    return numero_telefonico
+#     return numero_telefonico
 
-telefono = input("Ingrese el número telefónico como un string: ")
+# telefono = input("Ingrese el número telefónico como un string: ")
 
-numero_telefonico_convertido = convertir_a_numero_telefonico(telefono)
-print("El número telefónico convertido es:", numero_telefonico_convertido)
+# numero_telefonico_convertido = convertir_a_numero_telefonico(telefono)
+# print("El número telefónico convertido es:", numero_telefonico_convertido)
 
 
 # Ejercicio 8:
