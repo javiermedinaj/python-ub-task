@@ -183,3 +183,27 @@ telefono = input("Ingrese el número telefónico como un string: ")
 
 numero_telefonico_convertido = convertir_a_numero_telefonico(telefono)
 print("El número telefónico convertido es:", numero_telefonico_convertido)
+
+
+# Ejercicio 8:
+# Un ISBN-10 (International Standard Book Number) consiste de 10 dígitos: 
+# d1d2d3d4d5d6d7d8d9d10.
+# El último dígito, d10, es el dígito verificador que se calcula como sigue:
+# Si el dígito verificador es 10, el último dígito es x, de acuerdo a las normas ISBN. Escribir 
+# un programa que permita ingresar los primeros 9 dígitos como una cadena y muestre el 
+# número ISBN.
+# Ejemplo:       013601267 ---> 0136012671
+#                       013031997 ---> 013601267X
+def calcular_digito_verificador(primeros_nueve_digitos):
+    suma = 0
+    for i in range(9):
+        suma += int(primeros_nueve_digitos[i]) * (i + 1)
+    digito_verificador = suma % 11
+    if digito_verificador == 10:
+        return primeros_nueve_digitos + 'X'
+    else:
+        return primeros_nueve_digitos + str(digito_verificador)
+
+primeros_nueve_digitos = input("Ingrese los primeros 9 dígitos del ISBN-10: ")
+isbn = calcular_digito_verificador(primeros_nueve_digitos)
+print("El número ISBN completo es:", isbn)

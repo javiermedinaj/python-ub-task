@@ -1,25 +1,24 @@
 # Trabajo practico hecho por los alumnos : Javier Medina, Edmundo Minguet y Leandro Beltran
 
-
-print("Tablero:")
-print("  1 2 3 4 5 6 7 8")
-print(" +----------------")
-print("8|. . . . . . . .|8")
-print("7|. . . . . . . .|7")
-print("6|. . . . . . . .|6")
-print("5|. . . . . . . .|5")
-print("4|. . . . . . . .|4")
-print("3|. . . . . . . .|3")
-print("2|. . . . . . . .|2")
-print("1|. . . . . . . .|1")
-print(" +----------------")
-print("  1 2 3 4 5 6 7 8")
+# print("Tablero:")
+# print("  1 2 3 4 5 6 7 8")
+# print(" +----------------")
+# print("8|. . . . . . . .|8")
+# print("7|. . . . . . . .|7")
+# print("6|. . . . . . . .|6")
+# print("5|. . . . . . . .|5")
+# print("4|. . . . . . . .|4")
+# print("3|. . . . . . . .|3")
+# print("2|. . . . . . . .|2")
+# print("1|. . . . . . . .|1")
+# print(" +----------------")
+# print("  1 2 3 4 5 6 7 8")
 
 
 rey1 = int(input("Escriba la fila donde está el rey: "))
 rey2 = int(input("Escriba la columna donde está el rey: "))
 if rey1 > 8 or rey2 > 8 or rey1 < 1 or rey2 < 1:
-    print("Error")
+    print("error : fuera de rango")
 else:
     pieza = input("Ingrese qué pieza desea utilizar (peon, reina, alfil, caballo, torre): ")
 
