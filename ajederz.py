@@ -207,3 +207,4 @@ elif pieza == "peon":
         print("El rey no está en jaque.")
 else:
     print("Error")
+
