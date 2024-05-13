@@ -206,57 +206,182 @@
 # primeros_nueve_digitos = input("Ingrese los primeros 9 dígitos del ISBN-10: ")
 # isbn = calcular_digito_verificador(primeros_nueve_digitos)
 # print("El número ISBN completo es:", isbn)
+      
 
-         
+        #FALTA HACER
+# Ejercicio 9:
+# ISBN-13 es un nuevo estandar para identificar libros. Usa 13 dígitos: 
+# d1d2d3d4d5d6d7d8d9d10d11d12d13 .
+# El último dígito, es el dígito verificador y se calcula con la siguiente fórmula:
+# Si el dígito verificador es 10 se reemplaza por 0. El programa deberá permitir ingresar un 
+# número como un string y mostrar el ISBN-13, ejemplo:
+# 978013213080 ---> 9780132130806
+         #FALTA HACER
+
+# Ejercicio 10:
+# Escribir una programa que permita ingresar un texto y un caracter e imprima la palabra 
+# más larga en la que se encuentra ese carácter
+# def encontrar_palabra_mas_larga(texto, caracter):
+#     palabras = texto.split()
+#     palabras_con_caracter = [palabra for palabra in palabras if caracter in palabra]
+#     if palabras_con_caracter:
+#         palabra_mas_larga = max(palabras_con_caracter, key=len)
+#         return palabra_mas_larga
+#     else:
+#         return "No se encontró ninguna palabra con el caracter especificado."
+
+# texto = input("Ingrese un texto: ")
+# caracter = input("Ingrese un caracter: ")
+
+# palabra_mas_larga = encontrar_palabra_mas_larga(texto, caracter)
+# print("La palabra más larga que contiene el caracter es:", palabra_mas_larga)
 
 
-# Los biólogos usan una secuencia de letras A, C, T, y G para modelar un genoma. Un gen es
-# un subcadena de un genoma que comienza después de la tripleta ATG y termina con una 
-# tripleta TAG, TAA, ó TGA. La longiutd de una cadena de gen es un múltiplo de 3 y el gen 
-# no contiene a las tripletas ATG, TAG, TAA y TGA. Escribir un programa que permita 
-# ingresar un genoma y muestre todos los genes en el genoma. Si en la cadena no se 
-# encuentran genes, el programa mostrará un mensaje acorde. Ejemplo: 
-# si la cadena es TTATGTTTTAAGGATGGGGCGTTAGTT, el programa mostrará:
-# TTT
-# def encontrar_genes(genoma):
-#     """
-#     Finds and returns a list of genes in a given genome sequence.
+#ejercicio 11
+# La ley de Chargaff dice que en el ADN de un organismo la cantidad de Adenina es la 
+# misma que la de Tiamina, y la de Citosina es la misma que la de Guanina. Dada una 
+# secuencia de nucleótidos del estilo de ATTACCAGTACA... podemos comprobar si cumple
+# dicha ley de la siguiente forma:
+# Contamos la cantidad de A, T, C y G presentes en la cadena y calculamos los coeficientes
+# donde NX indica la cantidad de nucleótidos del tipo X presentes en la secuencia.
+# Partiremos de una cadena que contiene una cantidad indeterminada de caracteres, que 
+# # solo pueden ser A, T, G ó C. Calcula a partir de dicha cadena los coeficientes a y c
+# def calcular_coeficientes(secuencia):
+#     a = secuencia.count('A')
+#     t = secuencia.count('T')
+#     c = secuencia.count('C')
+#     g = secuencia.count('G')
 
-#     Args:
-#         genoma (str): The genome sequence to search for genes.
+#     return a, c
 
-#     Returns:
-#         list: A list of genes found in the genome sequence.
+# secuencia = input("Ingrese la secuencia de nucleótidos: ")
+# coeficientes = calcular_coeficientes(secuencia)
+# #devuelve tupla con los valores de a y c
+# print("Coeficientes: a =", coeficientes[0], "c =", coeficientes[1])
 
-#     """
-#     genes = []
-#     start_codon = "ATG"
-#     stop_codons = ["TAG", "TAA", "TGA"]
-#     i = 0
 
-#     while i < len(genoma):
-#         if genoma[i:i+3] == start_codon:
-#             j = i + 3
-#             while j < len(genoma):
-#                 if genoma[j:j+3] in stop_codons:
-#                     gene = genoma[i:j+3]
-#                     genes.append(gene)
-#                     i = j + 3
-#                     break
-#                 j += 3
-#             else:
-#                 i += 3
+# Ejercicio 12:
+# Escribe un programa que lea dos cadenas y devuelva el prefijo común más largo de
+# ambas. Ejemplo: las cadenas "politécnico" y "polinización" tienen como prefijo común más
+# largo a la cadena "poli"
+# def encontrar_prefijo_comun(cadena1, cadena2):
+#     prefijo = ""
+#     min_length = min(len(cadena1), len(cadena2))
+#     for i in range(min_length):
+#         if cadena1[i] == cadena2[i]:
+#             prefijo += cadena1[i]
 #         else:
-#             i += 1
+#             return prefijo
+#     return prefijo
 
-#     return genes
+# cadena1 = input("Ingrese la primera cadena: ")
+# cadena2 = input("Ingrese la segunda cadena: ")
 
-# genoma = input("Ingrese el genoma: ")
-# genes_encontrados = encontrar_genes(genoma)
+# prefijo_comun = encontrar_prefijo_comun(cadena1, cadena2)
+# print("El prefijo común más largo es:", prefijo_comun)
 
-# if len(genes_encontrados) > 0:
-#     print("Genes encontrados:")
-#     for gene in genes_encontrados:
-#         print(gene)
+# Ejercicio 13:
+# Necesitamos buscar en diversas secuencias de ARN las posibles apariciones del codón 
+# iniciador 'AUG', que marca el inicio de un gen. Como en una secuencia de ARN puede 
+# haber más de un gen, deseamos conocer todas las posiciones en las que aparece dicho 
+# codón. Para ello elaboraremos un programa que ingresará una cadena de caracteres que 
+# representa una secuencia de ARN y comprobará que la secuencia de ARN contiene 
+# únicamente los caracteres 'A','U', 'G' ó 'C'. En caso contrario, la secuencia es inválida y se 
+# deberá imprimir un mensaje adecuado.
+# def buscar_codon_iniciador(secuencia_arn):
+#     for nucleotido in secuencia_arn:
+#         if nucleotido not in ['A', 'U', 'G', 'C']:
+#             print("La secuencia de ARN es inválida.")
+#             return
+    
+#     indices = []
+#     for i in range(len(secuencia_arn) - 2):
+#         if secuencia_arn[i:i+3] == 'AUG':
+#             indices.append(i)
+    
+#     if indices:
+#         print("Posiciones del codón iniciador 'AUG':", indices)
+#     else:
+#         print("El codón iniciador 'AUG' no se encuentra en la secuencia de ARN.")
+
+
+# # secuencia_arn = "AUGGCAUGGCAUGAUGGCAUG" #ejemplo
+# secuencia_arn = input("Ingrese una secuencia de ARN: ")
+# buscar_codon_iniciador(secuencia_arn)
+
+#el ejercico14 es opcional
+
+
+# Ejercicio 15:
+# Dos palabras son anagramas si tienen las mismas letras pero en otro orden. Por ejemplo, 
+# «torpes» y «postre» son anagramas, mientras que «aparta» y «raptar» no lo son, ya que 
+# «raptar» tiene una r de más y una a de menos.
+# Escriba la función sonAnagramas(p1, p2) que indique si las palabras p1 y p2 son 
+# anagramas:
+# sonAnagramas('torpes', 'postre') ---> True
+# sonAnagramas('aparta', 'raptar') ---> False
+# def sonAnagramas(p1, p2):
+#     # replace para eleiminar espacios en blanc y lower para asegurarme que ambas palabras esten en minúsculas
+#     p1 = p1.replace(" ", "").lower()
+#     p2 = p2.replace(" ", "").lower()
+
+#     #validacion para devolver false si no son iguales las palabras
+#     if len(p1) != len(p2):
+#         return False
+    
+    
+#     frecuencias_p1 = {}
+#     frecuencias_p2 = {}
+
+    
+#     for letra in p1:
+#         frecuencias_p1[letra] = frecuencias_p1.get(letra, 0) + 1
+
+    
+#     for letra in p2:
+#         frecuencias_p2[letra] = frecuencias_p2.get(letra, 0) + 1
+
+#     #comparacion de palabras    
+#     return frecuencias_p1 == frecuencias_p2
+
+
+# # print(sonAnagramas('torpes', 'postre'))  # Devuelve True
+# # print(sonAnagramas('aparta', 'raptar'))  # Devuelve False
+# palabra1 = input(" ingrese una palabra: ")
+# palabra2 = input(" ingrese otra palabra: ")
+
+# if sonAnagramas(palabra1, palabra2):
+#     print("las palabras son anagramas")
 # else:
-#     print("No se encontraron genes en el genoma.")
+#     print("las palabras no son anagramas")
+
+# Ejercicio 16:
+# Las palabras panvocálicas son las que tienen las cinco vocales. Por ejemplo: centrifugado, 
+# bisabuelo, hipotenusa. Escriba la función esPanvocalica(palabra) que indique si una 
+# palabra es panvocálica o no:
+# esPanvocalica('educativo') ---> True
+# esPanvocalica('pedagogico') ---> False
+# def esPanvocalica(palabra):
+    
+#     palabra = palabra.lower()
+    
+#     # set para almacenar las vocales
+#     vocales = set()
+    
+    
+#     for letra in palabra:
+#         if letra in 'aeiou':
+#             vocales.add(letra)
+    
+#     return len(vocales) == 5
+
+
+# # print(esPanvocalica('educativo'))   # Devuelve True
+# # print(esPanvocalica('pedagogico'))   # Devuelve False
+# palabra = input("ingrese una palabra: ")
+
+# if esPanvocalica(palabra):
+#     print("la palabra es panvocalica")
+# else:
+#     print("la palabra no es panvocalica")
+
