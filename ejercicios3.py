@@ -217,6 +217,23 @@
 # número como un string y mostrar el ISBN-13, ejemplo:
 # 978013213080 ---> 9780132130806
          #FALTA HACER
+# Ejercicio 9: Calcular dígito verificador ISBN-13
+
+def calcular_digito_verificador(primeros_doce_digitos):
+    if len(primeros_doce_digitos) != 12:
+        return "No son 12 dígitos"
+    
+    suma = 0
+    for i in range(12):
+        suma += int(primeros_doce_digitos[i]) * (3 if i % 2 == 0 else 1)
+    digito_verificador = (10 - (suma % 10)) % 10
+    return primeros_doce_digitos + str(digito_verificador)
+
+primeros_doce_digitos = input("Ingrese los primeros 12 dígitos del ISBN-13: ")
+isbn = calcular_digito_verificador(primeros_doce_digitos)
+print("El número ISBN-13 es:", isbn)
+
+
 
 # Ejercicio 10:
 # Escribir una programa que permita ingresar un texto y un caracter e imprima la palabra 
