@@ -1,5 +1,9 @@
 # #Ejercicio 1:Implementa un programa que muestre todos los múltiplos de 6 entre 6 y 150, ambosinclusive.
-
+# inicio = 6
+# fin = 150
+# for num in range(inicio, fin + 1):
+#     if num % 6 == 0:
+#         print(num)
 
 # Ejercicio2:
 # Diseña un programa que solicite la lectura de un número entre 0 y 10 (ambos inclusive).
@@ -13,7 +17,7 @@
 # while numero < 1 or numero > 10:
 #     numero = int(input("El número debe estar entre 1 y 10 (inclusive). Por favor, inténtalo nuevamente: "))
 
-# print("¡ Has ingresado el número", numero)
+# print("Has ingresado el número", numero)
 
 
 #  Ejercicio 3:
@@ -29,7 +33,31 @@
 #             print()
 
 
-#falta ejercicio 4 y 5
+#ejercicio 4 y 5
+def multiplicacion_rusa(n, m):
+    resultado = 0
+    pasos = []
+    
+    while m > 0:
+        if m % 2 != 0:  # Si m es impar
+            resultado += n
+            pasos.append(f"* {n} | {m}")
+        else:
+            pasos.append(f"  {n} | {m}")
+        n = n * 2
+        m = m // 2
+        
+    return resultado, pasos
+
+# Ejemplo de uso
+n = 31
+m = 27
+producto, pasos = multiplicacion_rusa(n, m)
+
+print(f"El resultado de {n} * {m} es: {producto}")
+print("Pasos intermedios:")
+for paso in pasos:
+    print(paso)
 
 
 # #ejercicio 6
