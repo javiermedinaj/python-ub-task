@@ -69,19 +69,6 @@
 import re
 
 def comprimir_imagen(imagen):
-    """
-    Compresses an image by replacing consecutive occurrences of the same character with a compressed format.
-
-    Args:
-        imagen (str): The input image string.
-
-    Returns:
-        str: The compressed image string.
-
-    Example:
-        >>> comprimir_imagen('aaabbbccc')
-        '(a3)(b3)(c3)'
-    """
     comprimida = ''
     for match in re.finditer(r'(\w)\1{3,}', imagen):
         comprimida += f'({match.group(1)}{len(match.group(0))})'
