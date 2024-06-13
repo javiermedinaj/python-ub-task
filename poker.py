@@ -1,49 +1,60 @@
 import random as r
+
 def crear_mazo():
-    mazo: list[str] = []
-    palos: list[str] = ['❤️', '♦️', '♣', '♠']
-    valores: list[str] = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    mazo = []
+    palos = ['❤️', '🔷', '♣', '♠']
+    valores = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
     for palo in palos:
         for valor in valores:
             carta = valor + ' de ' + palo
             mazo.append(carta)
     return mazo
 
-
 def repartir_cartas(mazo):
     r.shuffle(mazo)
     jugador1 = []
     jugador2 = []
-    for i in range(5):
+    for _ in range(5):
         jugador1.append(mazo.pop())
         jugador2.append(mazo.pop())
     return jugador1, jugador2
 
-
 def esFull(mano):
-    valores = [carta[0] for carta in mano]
-    counts = {valor: valores.count(valor) for valor in valores}
-    return 3 in counts.values() and 2 in counts.values()
-
+    numeros = [carta.split(' ')[0] for carta in mano]
+    for numero in numeros:
+        if numeros.count(numero) == 3:
+            for numero2 in numeros:
+                if numeros.count(numero2) == 2:
+                    return True
+    return False
 
 def esColor(mano):
-    palos = set([carta[1] for carta in mano])
-    return len(palos) == 1
+    palos = [carta.split(' ')[-1] for carta in mano]
+    for palo in palos:
+        if palos.count(palo) == 5:
+            return True
+    return False
 
+def valor_numerico(valor):
+    valores = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 11, 'Q': 12, 'K': 13, 'A': 14}
+    return valores[valor]
 
 def esEscalera(mano):
-    valores = [carta[0] for carta in mano]
-    valores_numericos = [int(valor) if valor.isdigit() else (
-        11 if valor == 'J' else (12 if valor == 'Q' else (13 if valor == 'K' else 1))) for valor in valores]
-    return sorted(valores_numericos) == list(range(min(valores_numericos), max(valores_numericos) + 1))
+    numeros = [valor_numerico(carta.split(' ')[0]) for carta in mano]
+    numeros.sort()
+    for i in range(1, len(numeros)):
+        if numeros[i-1] != numeros[i] - 1:
+            return False
+    return True
 
+def esEscaleraColor(mano):
+    return esEscalera(mano) and esColor(mano)
 
 def main():
     mazo = crear_mazo()
     jugador1, jugador2 = repartir_cartas(mazo)
 
     print("Cartas del jugador 1:", jugador1)
-
     if esFull(jugador1):
         print("Jugador 1 tiene un Full")
     else:
@@ -58,15 +69,14 @@ def main():
         print("Jugador 1 tiene una Escalera")
     else:
         print("Jugador 1 no tiene una Escalera")
-    if esColor(jugador1) and esEscalera(jugador1):
+
+    if esEscaleraColor(jugador1):
         print("Jugador 1 tiene una Escalera de Color")
     else:
         print("Jugador 1 no tiene una Escalera de Color")
 
-    #mano del jugador 2
     print()
     print("Cartas del jugador 2:", jugador2)
-
     if esFull(jugador2):
         print("Jugador 2 tiene un Full")
     else:
@@ -82,10 +92,9 @@ def main():
     else:
         print("Jugador 2 no tiene una Escalera")
 
-    if esColor(jugador2) and esEscalera(jugador2):
+    if esEscaleraColor(jugador2):
         print("Jugador 2 tiene una Escalera de Color")
     else:
         print("Jugador 2 no tiene una Escalera de Color")
-
 
 main()
