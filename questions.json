@@ -691,8 +691,8 @@
         "correct_answer": "#include <stdio.h>",
         "incorrect_answers": [
             "#include <stdio>",
-            "#include <stdio.h>",
-            "#include <stdio.h>"
+            "#include stdio.h",
+            "#include Stdio.h>"
         ]
     },
     {
