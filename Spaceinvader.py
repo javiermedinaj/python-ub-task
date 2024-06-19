@@ -104,10 +104,12 @@ while running:
                     bulletSound.play()
                     bulletX = playerX
                     fire_bullet(bulletX, bulletY)
-
+            if event.key == pygame.K_ESCAPE:
+                running = False
         if event.type == pygame.KEYUP:
             if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
                 playerX_change = 0
+
 
     playerX += playerX_change
     if playerX <= 0:

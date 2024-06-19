@@ -14,7 +14,7 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 
 WINDOW_WIDTH = 600
-WINDOW_HEIGHT = 900
+WINDOW_HEIGHT = 700
 CELL_SIZE = 70
 #dimension del tablero
 BOARD_WIDTH = 4
